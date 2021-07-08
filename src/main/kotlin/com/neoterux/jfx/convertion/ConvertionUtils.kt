@@ -3,6 +3,7 @@
  * a specific Duration, for more see [Duration][javafx.util.Duration]
  */
 @file: JvmName("ConvUtils")
+@file: JvmMultifileClass
 package com.neoterux.jfx.convertion
 
 import javafx.util.Duration

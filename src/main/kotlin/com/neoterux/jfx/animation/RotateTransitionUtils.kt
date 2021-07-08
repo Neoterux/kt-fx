@@ -1,4 +1,5 @@
 @file: JvmName("AnimUtils")
+@file: JvmMultifileClass
 package com.neoterux.jfx.animation
 
 import com.neoterux.jfx.convertion.millis

@@ -1,4 +1,5 @@
 @file: JvmName("ConvUtils")
+@file: JvmMultifileClass
 package com.neoterux.jfx.convertion
 
 import javafx.geometry.Insets
