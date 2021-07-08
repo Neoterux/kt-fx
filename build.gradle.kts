@@ -3,6 +3,7 @@ plugins {
     kotlin("jvm") version "1.5.20"
     id("org.openjfx.javafxplugin") version "0.0.10"
     id("org.jetbrains.dokka") version "1.5.0"
+    maven
 }
 
 group = "com.neoterux"
@@ -28,4 +29,8 @@ dependencies {
 
 tasks.getByName<Test>("test") {
     useJUnitPlatform()
+}
+
+tasks.getByName("install") {
+    dependsOn("clean", "dokkaJavadoc", "jar")
 }
