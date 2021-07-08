@@ -10,6 +10,7 @@ group = "com.neoterux"
 version = "0.0.1-alpha"
 
 repositories {
+    jcenter()
     mavenCentral()
     maven(url = "https://jitpack.io")
 }
@@ -17,6 +18,11 @@ repositories {
 javafx {
     version = "11.0.2"
     modules("javafx.controls", "javafx.fxml", "javafx.swing")
+}
+
+java {
+    withSourcesJar()
+    withJavadocJar()
 }
 
 
@@ -32,5 +38,10 @@ tasks.getByName<Test>("test") {
 }
 
 tasks.getByName("install") {
-    dependsOn("clean", "dokkaJavadoc", "jar")
+    dependsOn("clean", "dokkaJavadoc","dokkaJavadocJar","sourcesJar", "jar")
+}
+
+tasks.create("dokkaJavadocJar", Jar::class){
+    from(buildDir.resolve("dokka").path)
+    classifier = "javadoc"
 }
