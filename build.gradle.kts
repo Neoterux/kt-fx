@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     java
-    kotlin("jvm") version "1.5.20"
+    kotlin("jvm") version "1.5.10"
     id("org.openjfx.javafxplugin") version "0.0.10"
     id("org.jetbrains.dokka") version "1.5.0"
     `maven-publish`
@@ -31,19 +31,19 @@ java {
 
 
 dependencies {
-    implementation(kotlin("stdlib"))
+    api(kotlin("stdlib"))
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
     dokkaGfmPlugin("org.jetbrains.dokka:kotlin-as-java-plugin:1.5.0")
 }
 
 tasks.withType<JavaCompile> {
-    sourceCompatibility += JavaVersion.VERSION_11
-    targetCompatibility += JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_11.toString()
+    targetCompatibility = JavaVersion.VERSION_11.toString()
 }
 
 tasks.withType<KotlinCompile> {
-    kotlinOptions.jvmTarget = "11"
+    kotlinOptions.jvmTarget = JavaVersion.VERSION_11.toString()
 }
 
 tasks.getByName<Test>("test") {
@@ -92,5 +92,5 @@ tasks.getByName("build") {
 
 tasks.create("dokkaJavadocJar", Jar::class){
     from(buildDir.resolve("dokka").path)
-    classifier = "javadoc"
+    archiveClassifier.set("javadoc")
 }
