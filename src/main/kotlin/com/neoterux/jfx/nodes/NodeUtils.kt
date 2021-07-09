@@ -50,3 +50,8 @@ fun Node.setHeights(min: Double, max: Double, pref: Double = Region.USE_COMPUTED
  * @param all the height to set to the node.
  */
 fun Node.setHeights(all: Double) = setHeights(all, all, all)
+
+/**
+ * Add css style hard-coded string
+ */
+fun Node.style(vararg cssLines: String)  { this.style = cssLines.joinToString(separator = "\n") }

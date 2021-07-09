@@ -19,7 +19,7 @@ repositories {
 
 javafx {
     version = "11.0.2"
-    modules("javafx.controls", "javafx.fxml", "javafx.swing")
+    modules("javafx.controls", "javafx.swing")
 }
 
 java {

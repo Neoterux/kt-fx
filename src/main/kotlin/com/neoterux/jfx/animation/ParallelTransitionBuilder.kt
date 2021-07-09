@@ -30,7 +30,7 @@ class ParallelTransitionBuilder(private val node: Node) {
      * Add an [javafx.animation.Animation] to the stack of animations that will be played.
      */
     fun addTransition(transition: Animation): ParallelTransitionBuilder {
-        animationStack.add(transition)
+        animationStack.push(transition)
         return this
     }
 
