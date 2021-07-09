@@ -1,6 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    `java-library`
     java
     kotlin("jvm") version "1.5.10"
     id("org.openjfx.javafxplugin") version "0.0.10"
@@ -40,6 +41,13 @@ dependencies {
 tasks.withType<JavaCompile> {
     sourceCompatibility = JavaVersion.VERSION_11.toString()
     targetCompatibility = JavaVersion.VERSION_11.toString()
+    options.javaModuleVersion.set(provider { project.version as String })
+}
+
+tasks.jar {
+    manifest {
+        attributes("Automatic-Module-Name" to "com.neoterux.jfx_ktx")
+    }
 }
 
 tasks.withType<KotlinCompile> {
@@ -56,6 +64,7 @@ publishing {
             groupId = "com.neoterux"
             artifactId = "javafx-ktx"
             version = "0.0.1-alpha"
+
             pom {
                 name.set("Javafx-Ktx")
                 description.set("A set of kotlin extensions for JavaFx")
