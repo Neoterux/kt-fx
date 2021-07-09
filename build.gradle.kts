@@ -50,12 +50,44 @@ tasks.getByName<Test>("test") {
     useJUnitPlatform()
 }
 
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            groupId = "com.neoterux"
+            artifactId = "javafx-ktx"
+            version = "0.0.1-alpha"
+            pom {
+                name.set("Javafx-Ktx")
+                description.set("A set of kotlin extensions for JavaFx")
+
+                developers {
+                    developer{
+                        id.set("Neoterux")
+                        name.set("Luis Bajaña")
+                        email.set("neoterux@gmail.com")
+                    }
+                }
+            }
+
+            from(components["java"])
+        }
+    }
+}
+
 //tasks.getByName("stage") {
 //    dependsOn("clean", "dokkaJavadoc","dokkaJavadocJar","sourcesJar", "jar")
 //}
 
-tasks.create("install") {
-    dependsOn("clean", "dokkaJavadoc", "dokkaJavadocJar", "sourcesJar", "jar")
+tasks.getByName("publishToMavenLocal") {
+    dependsOn("dokkaJavadoc", "dokkaJavadocJar")
+}
+
+//tasks.create("install") {
+//    dependsOn("clean", "dokkaJavadoc", "dokkaJavadocJar", "sourcesJar", "jar", "publishToMavenLocal")
+//}
+
+tasks.getByName("build") {
+    dependsOn("dokkaJavadoc", "dokkaJavadocJar")
 }
 
 tasks.create("dokkaJavadocJar", Jar::class){
