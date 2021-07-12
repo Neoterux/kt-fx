@@ -18,11 +18,9 @@ fun Node.addStyleSheet(loc: String) {
  * @param pref prefered width, by default is [Region.USE_COMPUTED_SIZE]
  */
 fun Node.setWidths(min: Double, max: Double, pref: Double = Region.USE_COMPUTED_SIZE) {
-    apply{
-        minWidth(min)
-        maxWidth(max)
-        prefWidth(pref)
-    }
+    minWidth(min)
+    maxWidth(max)
+    prefWidth(pref)
 }
 
 /**
@@ -38,11 +36,9 @@ fun Node.setWidths(all: Double) = setWidths(all, all, all)
  * @param pref prefered height, by default is [Region.USE_COMPUTED_SIZE]
  */
 fun Node.setHeights(min: Double, max: Double, pref: Double = Region.USE_COMPUTED_SIZE) {
-    apply{
-        minHeight(min)
-        maxHeight(max)
-        prefHeight(pref)
-    }
+    minHeight(min)
+    maxHeight(max)
+    prefHeight(pref)
 }
 
 /**
